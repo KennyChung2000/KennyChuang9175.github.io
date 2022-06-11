@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>1249</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <style>
+      #debug {
+        position: fixed;
+        z-index: 10000;
+        background-color: #fff;
+        padding: 50px;
+        top: 0;
+        left: 0;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <div id="debug" 
+         value=""></div>
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
+      <a-gltf-model 
+      src="https://brianchirls.github.io/aframe-test/assets/duck/Duck.gltf" 
+      scale="0.2 0.2 0.2" 
+      gps-entity-place="latitude: 24.182428710783366; longitude:120.59139587004617;"
+      ></a-gltf-model>
+
+      <a-text
+        id="text"
+        value=""
+        look-at="[gps-camera]"
+        scale="30 30 30"
+        position="0 55 0"
+        gps-entity-place="latitude: 24.182428710783366; longitude: 120.59139587004617;"
+      ></a-text>
+      <a-camera gps-camera rotation-reader> </a-camera>
+    </a-scene>
+    <script>
+      const debug = document.getElementById('debug');
+      const text = document.getElementById('text');
+      var distance=text.getAttribute('distanceMsg');
+      var counter=0;
+      window.addEventListener('load', () => {
+        var timer = setInterval(function() {
+            distance=text.getAttribute('distanceMsg');
+            if(distance != null){debug.textContent= distance;}
+            else{debug.textContent="gps訊號偵測中";}
+         }, 1000);
+      });
+      
+      function update() {
+        return 1;
+      }
+      
+      debug.addEventListener('click', function (event) {
+         distance=text.getAttribute('distanceMsg');
+         debug.textContent =`${distance}123`;
+         alert("start");
+      });
+    </script>
+  </body>
+</html>
