@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>0441</title>
+    <title>0328</title>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
@@ -30,13 +30,16 @@
     >
       
       <a-gltf-model 
+        id="frame"
+        visible="false"           
         src="https://rexhorng.github.io/source/scene.gltf"
         scale="5 5 5" 
-        gps-entity-place="latitude: 24.17934537595975; longitude:120.60143288660169;">
+        gps-entity-place="latitude: 24.178970744377345; longitude:120.60179340914435;">
 
       </a-gltf-model>
       
-      <a-gltf-model 
+      <a-gltf-model
+      id="duck"
       src="https://brianchirls.github.io/aframe-test/assets/duck/Duck.gltf"
       scale="0.2 0.2 0.2" 
       gps-entity-place="latitude: 24.17934537595975; longitude:120.60143288660169;"
@@ -55,13 +58,15 @@
     <script>
       const debug = document.getElementById('debug');
       const text = document.getElementById('text');
+      const frame = document.getElementById('frame');
       var distance=text.getAttribute('distanceMsg');
       var counter=0;
       window.addEventListener('load', () => {
         var timer = setInterval(function() {
             distance=text.getAttribute('distanceMsg');
             if(distance != null){debug.textContent= distance;}
-            else{debug.textContent="gps訊號偵測中";}
+            else{debug.textContent="gps訊號偵測中";
+            if(distance<=5){frame.setAttribute('visible', true);}}
          }, 1000);
       });
       
