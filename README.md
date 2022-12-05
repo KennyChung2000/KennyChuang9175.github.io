@@ -1,2 +1,4 @@
-# KennyChuang9175.github.io
-"# KennyChuang9175.github.io" 
+# Location-based AR.js demo
+`WebSite Link: https://kennychuang9175.github.io/`
+
+
