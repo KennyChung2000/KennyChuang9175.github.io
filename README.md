@@ -1,4 +1,4 @@
 # Location-based AR.js demo
-`* WebSite Link: *` *_https://kennychuang9175.github.io/_*
+`*WebSite Link:*` *_https://kennychuang9175.github.io/_*
 
 
